@@ -28,7 +28,7 @@ public class NecromanceAbility extends AbilitySuper {
     private String summonType;
     private double summonHP;
     private int summonLength;
-    private HashMap<Player, List<LivingEntity>> necroSummons = new HashMap<>();
+    private ArrayList<LivingEntity> necroSummons = new ArrayList<>();
 
     public NecromanceAbility(LOTRings plugin, Ring ring, String abilityName) {
         super(plugin, ring, abilityName);
@@ -55,7 +55,7 @@ public class NecromanceAbility extends AbilitySuper {
             LivingEntity summon = (LivingEntity) playerLocation.getWorld().spawnEntity(playerLocation, EntityType.valueOf(summonType));
             summon.setMaxHealth(summonHP);
             summon.setHealth(summonHP);
-            necroSummons.computeIfAbsent(player, k -> new ArrayList<>()).add(summon);
+            necroSummons.add(summon);
 
             if(summon instanceof Monster){
                 ((Monster) summon).setTarget(null);
@@ -77,13 +77,11 @@ public class NecromanceAbility extends AbilitySuper {
     public void onHit(EntityDamageByEntityEvent event){
         if (event.getDamager() instanceof Player && event.getEntity() instanceof LivingEntity){
             Player player = ((Player) event.getDamager());
-            System.out.println("Damager: "+player);
             LivingEntity damagedPlayer = (LivingEntity) event.getEntity();
-            if (necroSummons.containsKey(player)){
-                for(LivingEntity e : getNecroEntities(player)){
-                    if(e instanceof Monster){
-                        ((Monster) e).setTarget(damagedPlayer);
-                    }
+
+            for(LivingEntity e : getNecroEntities(player)){
+                if(e instanceof Monster){
+                    ((Monster) e).setTarget(damagedPlayer);
                 }
             }
         }
@@ -91,13 +89,13 @@ public class NecromanceAbility extends AbilitySuper {
 
     @EventHandler
     public void onAgro(EntityTargetLivingEntityEvent event){
-        if(necroSummons.containsKey(event.getTarget()) && necroSummons.get(event.getTarget()).contains(event.getEntity())){
+        if(necroSummons.contains(event.getEntity())){
             event.setCancelled(true);
         }
     }
 
     public List<LivingEntity> getNecroEntities(Player player) {
-        return necroSummons.getOrDefault(player, new ArrayList<>());
+        return necroSummons;
     }
 
     public void clearNecroEntities(Player player) {
