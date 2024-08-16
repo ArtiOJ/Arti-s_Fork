@@ -19,6 +19,7 @@ public class LightningAbility extends AbilitySuper {
     private double range;
     private CooldownManager cooldownManager;
     private Sound sound;
+    private float damage;
 
     public LightningAbility(LOTRings plugin, Ring ring, String abilityName) {
         super(plugin, ring, abilityName);
@@ -26,6 +27,7 @@ public class LightningAbility extends AbilitySuper {
             this.range = plugin.getAbilityDataManager().getAbilityFloatData(abilityName, "range").doubleValue();
             this.cooldownManager = new CooldownManager(plugin, this, plugin.getAbilityDataManager().getAbilityFloatData(abilityName, "cooldown-seconds").doubleValue());
             this.sound = Sound.valueOf(plugin.getAbilityDataManager().getAbilityStringData(abilityName, "sound").toUpperCase());
+            this.damage = plugin.getAbilityDataManager().getAbilityFloatData(abilityName, "damage").intValue();
         } catch (Exception e) {
             sendLoadError();
         }
@@ -43,7 +45,7 @@ public class LightningAbility extends AbilitySuper {
         if (rayTraceResult2 != null) {
             LivingEntity targetEntity = (LivingEntity) rayTraceResult2.getHitEntity();
             targetEntity.getWorld().strikeLightningEffect(targetEntity.getLocation());
-            targetEntity.damage(6);
+            targetEntity.damage(damage);
             player.getWorld().playSound(player.getLocation(), sound, 10, 1);
 
             return;
