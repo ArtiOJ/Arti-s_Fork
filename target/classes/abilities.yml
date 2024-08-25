@@ -325,6 +325,7 @@ abilities:
     ability-type: LIGHTNING
     display-name: '&eLightning Strike'
     range: 30.0
+    damage: 6.0
     sound: ENTITY_LIGHTNING_BOLT_THUNDER
     cooldown-seconds: 3.0
     description:
