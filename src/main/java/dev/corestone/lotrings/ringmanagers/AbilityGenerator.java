@@ -73,6 +73,9 @@ public class AbilityGenerator {
                 case FIREBALL_RAIN:
                     abilities.add(new FireballRainAbility(plugin, ring, strAb));
                     break;
+                case SLAM:
+                    abilities.add(new SlamAbility(plugin, ring, strAb));
+                    break;
             }
         }
         return abilities;

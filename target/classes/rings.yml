@@ -32,6 +32,7 @@ rings:
       - strength-1
       - fireball_rain
       - necromancy
+      - slam
   narya:
     display-name: '&cNarya'
     custom-model-data: 13
