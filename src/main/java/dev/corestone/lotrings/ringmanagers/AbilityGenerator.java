@@ -76,6 +76,15 @@ public class AbilityGenerator {
                 case SLAM:
                     abilities.add(new SlamAbility(plugin, ring, strAb));
                     break;
+                case HEAL_OTHERS:
+                    abilities.add(new HealOthersAbility(plugin, ring, strAb));
+                    break;
+                case RESIST_EFFECTS:
+                    abilities.add(new PotionResistanceAbility(plugin, ring, strAb));
+                    break;
+                case RESIST_DAMAGE:
+                    abilities.add(new ResistDamageAbility(plugin, ring, strAb));
+                    break;
             }
         }
         return abilities;

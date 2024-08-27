@@ -5,6 +5,7 @@ import dev.corestone.lotrings.Ring;
 import dev.corestone.lotrings.abilities.abilityutil.CooldownManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -26,6 +27,7 @@ public class SlamAbility extends AbilitySuper {
     private CooldownManager cooldownManager;
     private Sound launchSound;
     private Sound slamSound;
+    private boolean fire;
     private boolean isUsingAbility = false;
 
     public SlamAbility(LOTRings plugin, Ring ring, String abilityName) {
@@ -39,6 +41,7 @@ public class SlamAbility extends AbilitySuper {
             this.pushbackVerticalStrength = plugin.getAbilityDataManager().getAbilityFloatData(abilityName, "pushback-vertical-strength").doubleValue();
             this.launchSound = Sound.valueOf(plugin.getAbilityDataManager().getAbilityStringData(abilityName, "launch-sound").toUpperCase());
             this.slamSound = Sound.valueOf(plugin.getAbilityDataManager().getAbilityStringData(abilityName, "slam-sound").toUpperCase());
+            this.fire = Boolean.parseBoolean(plugin.getAbilityDataManager().getAbilityStringData(abilityName, "fire"));
             this.cooldownManager = new CooldownManager(plugin, this, plugin.getAbilityDataManager().getAbilityFloatData(abilityName, "cooldown-seconds").doubleValue());
         } catch (Exception e) {
             sendLoadError();
@@ -68,7 +71,7 @@ public class SlamAbility extends AbilitySuper {
                     public void run() {
                         if (player.isOnGround()) {
                             Location slamLocation = player.getLocation();
-                            player.getWorld().createExplosion(slamLocation, (float) explosionPower, false, false);
+                            player.getWorld().createExplosion(slamLocation, (float) explosionPower, fire, false);
                             player.getWorld().playSound(slamLocation, slamSound, 10, 1);
                             for (Entity entity : slamLocation.getNearbyEntities(pushbackRange, pushbackRange, pushbackRange)) {
                                 if (entity instanceof LivingEntity && entity != player) {

@@ -20,7 +20,10 @@ public enum AbilityType {
     RAINSTORM(true, true),
     NECROMANCY(true, true),
     FIREBALL_RAIN(true, true),
-    SLAM(true, true);
+    SLAM(true, true),
+    HEAL_OTHERS(true, true),
+    RESIST_EFFECTS(false, true),
+    RESIST_DAMAGE(false, true);
 
 
     private boolean isToggled;

@@ -182,7 +182,7 @@ abilities:
     power: 0
     description:
       - '&8- &dHealing&7: adds more health!'
-  Levitating-others:
+  levitating-others:
     ability-type: EFFECT_NEARBY_ENTITIES
     display-name: '&7Levitate others'
     cooldown-seconds: 60
@@ -373,7 +373,7 @@ abilities:
     burst-interval-ticks: 2
     speed-multiplier: 0.3
     description:
-      - '&8- &fFIREABALLL'
+      - '&8- &fRegins fireballs from the sky!'
   necromancy:
     ability-type: NECROMANCY
     display-name: '&cNecromancy'
@@ -394,7 +394,37 @@ abilities:
     pushback-range: 7
     pushback-horizontal-strength: 10
     pushback-vertical-strength: 10
+    fire: false
     launch-sound: ENTITY_FIREWORK_ROCKET_LAUNCH
     slam-sound: ENTITY_GENERIC_EXPLODE
     description:
       - '&8- &fSlam into the ground, causing a shockwave that launches enemies away and deals damage.'
+  heal-others:
+    ability-type: HEAL_OTHERS
+    display-name: '&cHeal Others'
+    cooldown-seconds: 4
+    heal-amount: 10
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    range: 5
+    description:
+      - '&8- &fHeals a player you are looking at.'
+  resist_effects:
+    ability-type: RESIST_EFFECTS
+    display-name: '&9Resist Effects'
+    immune-effects:
+      - WITHER
+      - POISON
+      - CONFUSION
+    cooldown-seconds: 120.0
+    description:
+      - '&8- &9Potion Resistance&7: Grants immunity to Wither, Poison, and Nausea effects while holding the ring.'
+  resist_damage:
+    ability-type: RESIST_DAMAGE
+    display-name: '&9Resist Damage'
+    damage-resistance:
+      FIRE: 0.3
+      FALL: 0.5
+      ENTITY_ATTACK: 0.2
+    description:
+      - '&8- &9Resist Damage&7: Reduces damage taken from specific sources by a certain percentage while holding the ring.'
+

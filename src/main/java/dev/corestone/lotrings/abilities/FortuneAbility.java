@@ -60,6 +60,4 @@ public class FortuneAbility extends AbilitySuper implements Listener {
             player.getInventory().remove(tool);
         }
     }
-
-
 }
