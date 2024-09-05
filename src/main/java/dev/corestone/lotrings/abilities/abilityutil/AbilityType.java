@@ -24,7 +24,8 @@ public enum AbilityType {
     HEAL_OTHERS(true, true),
     RESIST_EFFECTS(false, true),
     RESIST_DAMAGE(false, true),
-    IGNITE_PLAYERS(true, true);
+    IGNITE_PLAYERS(true, true),
+    LIGHTNING_RAIN(true, true);
 
 
     private boolean isToggled;

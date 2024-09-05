@@ -453,3 +453,14 @@ abilities:
     sound: ENTITY_BLAZE_SHOOT
     description:
       - '&8- &9Ignite Players&7: Light Players around you on fire!'
+  lightning-rain:
+    cooldown-seconds: 15
+    ability-type: LIGHTNING_RAIN
+    display-name: '&9Lightning Area'
+    bolt-count: 100
+    strike-radius: 30
+    strike-duration-ticks: 100
+    sound: ENTITY_EVOKER_PREPARE_ATTACK
+    description:
+      - '&8- &9Lightning Area&7: Summon lightning strikes around you in a wide area!'
+

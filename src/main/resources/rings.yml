@@ -37,6 +37,7 @@ rings:
       - resist_effects
       - resist_damage
       - ignite-players
+      - lightning-rain
   narya:
     display-name: '&cNarya'
     custom-model-data: 13

@@ -34,9 +34,6 @@ public class LocationUtils {
             }
         } else {
             randomY = world.getHighestBlockYAt(randomX, randomZ);
-            if (!isValidSurface(world, randomX, randomY, randomZ)) {
-                return getRandomLocation(location, range, canBeInSky, canBeUnderground);
-            }
         }
 
         return new Location(world, randomX + 0.5, randomY + 0.5, randomZ + 0.5);

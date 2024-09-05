@@ -88,6 +88,9 @@ public class AbilityGenerator {
                 case IGNITE_PLAYERS:
                     abilities.add(new IgniteNearbyPlayersAbility(plugin, ring, strAb));
                     break;
+                case LIGHTNING_RAIN:
+                    abilities.add(new LightningAreaAbility(plugin, ring, strAb));
+                    break;
             }
         }
         return abilities;
