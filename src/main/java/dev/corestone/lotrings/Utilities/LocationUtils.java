@@ -36,6 +36,7 @@ public class LocationUtils {
             randomY = world.getHighestBlockYAt(randomX, randomZ);
         }
 
+
         return new Location(world, randomX + 0.5, randomY + 0.5, randomZ + 0.5);
     }
 
