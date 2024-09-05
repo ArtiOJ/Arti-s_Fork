@@ -108,6 +108,7 @@ public class FireballRainAbility extends AbilitySuper implements Listener {
             if (livingEntity instanceof Player && ring.getOwner().equals(livingEntity)) return;
             livingEntity.damage(damage, event.getEntity());
         }
+
     }
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
