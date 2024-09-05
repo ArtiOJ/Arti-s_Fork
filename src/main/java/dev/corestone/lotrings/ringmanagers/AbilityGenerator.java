@@ -85,6 +85,9 @@ public class AbilityGenerator {
                 case RESIST_DAMAGE:
                     abilities.add(new ResistDamageAbility(plugin, ring, strAb));
                     break;
+                case IGNITE_PLAYERS:
+                    abilities.add(new IgniteNearbyPlayersAbility(plugin, ring, strAb));
+                    break;
             }
         }
         return abilities;

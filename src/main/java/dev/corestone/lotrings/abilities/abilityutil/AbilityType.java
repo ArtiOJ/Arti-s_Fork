@@ -23,7 +23,8 @@ public enum AbilityType {
     SLAM(true, true),
     HEAL_OTHERS(true, true),
     RESIST_EFFECTS(false, true),
-    RESIST_DAMAGE(false, true);
+    RESIST_DAMAGE(false, true),
+    IGNITE_PLAYERS(true, true);
 
 
     private boolean isToggled;

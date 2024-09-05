@@ -28,6 +28,7 @@ public class SlamAbility extends AbilitySuper {
     private Sound launchSound;
     private Sound slamSound;
     private boolean fire;
+    private boolean launchWhereLooking;
     private boolean isUsingAbility = false;
 
     public SlamAbility(LOTRings plugin, Ring ring, String abilityName) {
@@ -42,6 +43,7 @@ public class SlamAbility extends AbilitySuper {
             this.launchSound = Sound.valueOf(plugin.getAbilityDataManager().getAbilityStringData(abilityName, "launch-sound").toUpperCase());
             this.slamSound = Sound.valueOf(plugin.getAbilityDataManager().getAbilityStringData(abilityName, "slam-sound").toUpperCase());
             this.fire = Boolean.parseBoolean(plugin.getAbilityDataManager().getAbilityStringData(abilityName, "fire"));
+            this.launchWhereLooking = Boolean.parseBoolean(plugin.getAbilityDataManager().getAbilityStringData(abilityName, "launch-where-looking"));
             this.cooldownManager = new CooldownManager(plugin, this, plugin.getAbilityDataManager().getAbilityFloatData(abilityName, "cooldown-seconds").doubleValue());
         } catch (Exception e) {
             sendLoadError();
@@ -63,8 +65,13 @@ public class SlamAbility extends AbilitySuper {
         new BukkitRunnable() {
             @Override
             public void run() {
-                player.setVelocity(new Vector(0, -launchHeight, 0)); // Launch back down
-
+                if (!launchWhereLooking) {
+                    player.setVelocity(new Vector(0, -launchHeight, 0)); // Launch back down
+                } else {
+                    Vector direction = player.getEyeLocation().getDirection();
+                    direction.multiply(launchHeight * 2);
+                    player.setVelocity(direction);
+                }
                 // Check repeatedly if the player has hit the ground
                 new BukkitRunnable() {
                     @Override

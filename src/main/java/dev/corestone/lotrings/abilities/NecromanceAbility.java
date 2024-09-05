@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -94,6 +95,14 @@ public class NecromanceAbility extends AbilitySuper {
     public void onAgro(EntityTargetLivingEntityEvent event){
         if(necroSummons.contains(event.getEntity())){
             event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onModDeath(EntityDeathEvent event) {
+        if (necroSummons.contains(event.getEntity())){
+            event.setDroppedExp(0);
+            event.getDrops().clear();
         }
     }
 

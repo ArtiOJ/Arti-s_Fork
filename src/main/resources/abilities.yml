@@ -392,6 +392,23 @@ abilities:
     launch-height: 15
     explosion-power: 5
     pushback-range: 7
+    launch-where-looking: false
+    pushback-horizontal-strength: 10
+    pushback-vertical-strength: 10
+    fire: false
+    launch-sound: ENTITY_FIREWORK_ROCKET_LAUNCH
+    slam-sound: ENTITY_GENERIC_EXPLODE
+    description:
+      - '&8- &fSlam into the ground, causing a shockwave that launches enemies away and deals damage.'
+  slam2:
+    ability-type: SLAM
+    display-name: '&cSlam 2'
+    cooldown-seconds: 10
+    launch-duration-ticks: 20
+    launch-height: 15
+    explosion-power: 5
+    pushback-range: 7
+    launch-where-looking: true
     pushback-horizontal-strength: 10
     pushback-vertical-strength: 10
     fire: false
@@ -427,4 +444,12 @@ abilities:
       ENTITY_ATTACK: 0.2
     description:
       - '&8- &9Resist Damage&7: Reduces damage taken from specific sources by a certain percentage while holding the ring.'
-
+  ignite-players:
+    cooldown-seconds: 10
+    ability-type: IGNITE_PLAYERS
+    display-name: '&9Ignite Players'
+    duration-ticks: 300
+    range: 10
+    sound: ENTITY_BLAZE_SHOOT
+    description:
+      - '&8- &9Ignite Players&7: Light Players around you on fire!'

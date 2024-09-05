@@ -32,9 +32,11 @@ rings:
       - fireball_rain
       - necromancy
       - slam
+      - slam2
       - heal-others
       - resist_effects
       - resist_damage
+      - ignite-players
   narya:
     display-name: '&cNarya'
     custom-model-data: 13
